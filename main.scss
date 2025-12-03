@@ -13,73 +13,116 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 30px;
-  max-width: 1000px;
+  max-width: 100%;
   margin: 0 auto;
   box-sizing: border-box;
+  padding: 30px 10px;
 
   @media (min-width: 500px) {
-    .people {
       grid-template-columns: repeat(2, 1fr);
       padding: 30px 35px;
-    }
   }
 
   @media (min-width: 750px) {
-    .people {
       grid-template-columns: repeat(2, 1fr);
       padding: 30px 160px;
-    }
   }
 
   @media (min-width: 1000px) {
-    .people {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       padding: 30px 55px;
-    }
   }
 
   @media (min-width: 1500px) {
-    .people {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       padding: 30px 305px;
-    }
   }
 }
 
 .person {
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
+
+  // justify-content: center;
+  align-items: center;
+  
+  // text-decoration: none;
+  transition: background-color 0s ease-in-out, transform 1s ease-in-out;
+
+  &:hover {
+    background-color: #EEEEEE;
+    transform: scale(1.05);
+
+    .person__photo-image {
+      border-radius: 10px;
+      transform: none; 
+
+      // transform: scale(1.2); 
+    }
+
+    .person__details-extra {
+        opacity: 1; 
+        transition: opacity 1s ease-in-out;
+    }
+
+    .person__details-name {
+        color: #2F4F4F;
+    }
+  }
 }
 
-.photo img {
-  width: 200px;
-  border-radius: 50%;
-}
-
-.details {
-  text-align: center;
-  padding-top: 8px;
-  padding-right: 13px;
-  padding-left: 13px;
-}
-
-.photo {
+.person__photo {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.rank {
+.person__photo-image {
+  width: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  transition: border-radius 1s ease-in-out, transform 1s ease-in-out;
+}
+
+.person__photo-rank {
   position: absolute;
   top: 84px;
   right: 10px;
-  background-color: #FFFFFF;
+  background-color: #EEEEEE;
   color: #8B0000;
   font-size: 16px;
   padding: 5px 10px;
-  border: 1px solid #FFFFFF;
+  border: 1px solid #EEEEEE;
   border-radius: 15px;
+}
+
+.person__details {
+  text-align: center;
+  padding-top: 8px;
+  padding-right: 13px;
+  padding-left: 13px;
+  z-index: 2;
+}
+
+.person__details-name {
+  display: block;
+  text-decoration: none;
+  color: #2F4F4F;
+  transition: color 0s;
+}
+
+.person__details-extra {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  opacity: 0; 
+  transition: opacity 0s ease-in-out; 
+}
+
+.person__details-sport,
+.person__details-pay {
+  font-size: 18px;
+  font-weight: 400;
+  color: #000;
 }
